@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>computed option</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+<h1>computed option</h1>
+<hr>
+<div id="app">
+    <p>{{newPrice}}</p>
+    <ul>
+        <li v-for="item in reversNews">{{item.title}}-{{item.data}}</li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+    var newsList = [
+        {title:'中美贸易战:挑战和机遇 保持经济稳中向好态势',data:'2018/8/2'},
+        {title:'两部委启动国家Ⅳ级救灾应急响应应对新疆暴雨灾情',data:'2018/8/3'},
+        {title:'湖南岳阳城陵矶新港区打造“通江达海”新增长极',data:'2018/8/26'},
+        {title:'美国突然使出连环损招，释放了三个意味深长的信号',data:'2018/8/28'}
+    ]
+    var app = new Vue({
+        el:'#app',
+        data:{
+            price:100,
+            newsList:newsList
+        },
+        computed:{
+            newPrice:function () {
+                return this.price='￥' + this.price + '元';
+            },
+            reversNews:function () {
+                return this.newsList.reverse();
+            }
+        }
+    })
+</script>
+</body>
+</html>
